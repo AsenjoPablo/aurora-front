@@ -1,6 +1,7 @@
 import { Route } from '@angular/router';
 import { KitchenSinkComponent } from './kitchen-sink.component';
-import { FormComponent } from './form.component';
+import { FormMaterialComponent } from './form-material.component';
+import { FormIgniteComponent } from './form-ignite.component';
 
 export const kitchenSinkRoutes: Route[] = [
     {
@@ -8,9 +9,14 @@ export const kitchenSinkRoutes: Route[] = [
         component: KitchenSinkComponent,
         children : [
             {
-                path     : 'form',
+                path     : 'form-material',
                 pathMatch: 'full',
-                component: FormComponent
+                component: FormMaterialComponent
+            },
+            {
+                path     : 'form-ignite',
+                pathMatch: 'full',
+                component: FormIgniteComponent
             }
         ]
     }

@@ -11,10 +11,17 @@ export const defaultNavigation: FuseNavigationItem[] = [
         children: [
             {
                 id   : 'form',
-                title: 'Form',
+                title: 'Form Material',
                 type : 'basic',
                 icon : 'heroicons_outline:chart-pie',
-                link : '/kitchen-sink/form',
+                link : '/kitchen-sink/form-material',
+            },
+            {
+                id   : 'form',
+                title: 'Form Ignite',
+                type : 'basic',
+                icon : 'heroicons_outline:chart-pie',
+                link : '/kitchen-sink/form-ignite',
             },
             {
                 id   : 'example',

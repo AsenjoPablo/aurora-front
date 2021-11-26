@@ -36,7 +36,7 @@
             <!-- Title -->
             <div class="mt-2">
                 <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
-                    Page heading
+                    Form Ignite
                 </h2>
             </div>
         </div>
@@ -67,23 +67,19 @@
 
         <!-- CONTENT GOES HERE -->
         <div class="h-400 min-h-400 max-h-400 border-2 border-dashed border-gray-300 rounded-2xl">
-            <mat-form-field appearance="outline">
-                <mat-label>Input</mat-label>
-                <input matInput>
-            </mat-form-field>
 
-            <mat-form-field appearance="outline">
-                <mat-label>Select</mat-label>
-                <mat-select>
-                    <mat-option value="one">First option</mat-option>
-                    <mat-option value="two">Second option</mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <igx-input-group>
+            <igx-input-group type="border">
                 <input igxInput name="fullName" type="text" />
                 <label igxLabel for="fullName">Full Name</label>
             </igx-input-group>
+
+            <igx-select #select type="border">
+                <label igxLabel>Simple Select</label>
+                <igx-select-item *ngFor="let item of items" [value]="item">
+                    {{item}}
+                </igx-select-item>
+            </igx-select>
+
         </div>
 
     </div>
