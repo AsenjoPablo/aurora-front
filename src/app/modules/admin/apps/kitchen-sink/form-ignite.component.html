@@ -68,17 +68,20 @@
         <!-- CONTENT GOES HERE -->
         <div class="h-400 min-h-400 max-h-400 border-2 border-dashed border-gray-300 rounded-2xl">
 
-            <igx-input-group type="border">
-                <input igxInput name="fullName" type="text" />
-                <label igxLabel for="fullName">Full Name</label>
-            </igx-input-group>
+            <div class="grid grid-cols-4 gap-4">
+                <igx-input-group type="border">
+                    <input igxInput name="fullName" type="text" />
+                    <label igxLabel for="fullName">Full Name</label>
+                </igx-input-group>
 
-            <igx-select #select type="border">
-                <label igxLabel>Simple Select</label>
-                <igx-select-item *ngFor="let item of items" [value]="item">
-                    {{item}}
-                </igx-select-item>
-            </igx-select>
+                <igx-select #select type="border">
+                    <label igxLabel>Simple Select</label>
+                    <igx-select-item *ngFor="let item of items" [value]="item">
+                        {{item}}
+                    </igx-select-item>
+                </igx-select>
+            </div>
+
 
         </div>
 
