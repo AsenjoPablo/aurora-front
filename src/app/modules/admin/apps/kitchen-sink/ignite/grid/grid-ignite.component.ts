@@ -41,7 +41,15 @@ export class GridIgniteComponent implements OnInit
                 ShipCountry: 'Francia',
                 SaleAmount: 2514,
                 ShippedDate: new Date(),
-            }
+            },
+            {
+                OrderID: 2,
+                CategoryName: 'Foods',
+                CompanyName: 'AM Resorts',
+                ShipCountry: 'Alamánia',
+                SaleAmount: 3574,
+                ShippedDate: new Date(),
+            },
         ];
         this.grid1.sortingExpressions = [
             {
