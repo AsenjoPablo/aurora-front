@@ -36,7 +36,7 @@
             <!-- Title -->
             <div class="mt-2">
                 <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
-                    Form Material
+                    Grid Ignite
                 </h2>
             </div>
         </div>
@@ -68,20 +68,36 @@
         <!-- CONTENT GOES HERE -->
         <div class="h-400 min-h-400 max-h-400 border-2 border-dashed border-gray-300 rounded-2xl">
 
-            <div class="grid grid-cols-4 gap-4">
-                <mat-form-field appearance="outline">
-                    <mat-label>Input</mat-label>
-                    <input matInput>
-                </mat-form-field>
+            <igx-grid igxPreventDocumentScroll #grid1 [data]="data" [autoGenerate]="false" height="500px" width="100%"
+                (sortingDone)="removeSorting($event)">
+                <igx-grid-toolbar>
+                    <igx-grid-toolbar-actions>
+                    <igx-select [(ngModel)]="currentSortingType" (selectionChanging)="sortTypeSelection($event)">
+                        <label igxLabel>Select Sorting Type</label>
+                        <igx-select-item *ngFor="let type of sortingTypes" [value]="type.value">
+                            {{type.name}}
+                        </igx-select-item>
+                    </igx-select>
+                    </igx-grid-toolbar-actions>
 
-                <mat-form-field appearance="outline">
-                    <mat-label>Select</mat-label>
-                    <mat-select>
-                        <mat-option value="one">First option</mat-option>
-                        <mat-option value="two">Second option</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
+                </igx-grid-toolbar>
+                <igx-column field="OrderID" header="Order ID">
+                </igx-column>
+                <igx-column field="CategoryName" header="Category Name" [dataType]="'string'" sortable="true">
+                </igx-column>
+                <igx-column field="CompanyName" header="Company Name" [dataType]="'string'" sortable="true">
+                </igx-column>
+                <igx-column field="ShipCountry" header="Ship Country" [dataType]="'string'" sortable="true">
+                </igx-column>
+                <igx-column field="SaleAmount" header="Sale Amount" dataType="number" sortable="true">
+                    <ng-template igxCell let-cell="cell" let-val let-row>
+                        ${{val}}
+                    </ng-template>
+                </igx-column>
+                <igx-column field="ShippedDate" header="Shipped Date" [dataType]="'date'" [formatter]="formatDate"
+                    sortable="true">
+                </igx-column>
+            </igx-grid>
 
         </div>
 

@@ -13,7 +13,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 // Ignite
-import { IgxCheckboxModule, IgxChipsModule, IgxIconModule, IgxInputGroupModule, IgxSelectModule } from 'igniteui-angular';
+import { IgxCheckboxModule, IgxChipsModule, IgxGridModule, IgxIconModule, IgxInputGroupModule, IgxRippleModule, IgxSelectModule } from 'igniteui-angular';
+import { GridIgniteComponent } from './ignite/grid/grid-ignite.component';
 
 @NgModule({
     imports     : [
@@ -29,8 +30,10 @@ import { IgxCheckboxModule, IgxChipsModule, IgxIconModule, IgxInputGroupModule, 
         // Ignite
         IgxCheckboxModule,
         IgxChipsModule,
+        IgxGridModule,
         IgxIconModule,
         IgxInputGroupModule,
+        IgxRippleModule,
         IgxSelectModule,
     ],
     declarations: [
@@ -41,6 +44,7 @@ import { IgxCheckboxModule, IgxChipsModule, IgxIconModule, IgxInputGroupModule, 
 
         // Ignite
         FormIgniteComponent,
+        GridIgniteComponent,
     ],
 })
 export class KitchenSinkModule

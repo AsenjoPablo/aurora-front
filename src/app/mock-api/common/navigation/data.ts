@@ -18,10 +18,25 @@ export const defaultNavigation: FuseNavigationItem[] = [
             },
             {
                 id   : 'form',
-                title: 'Form Ignite',
-                type : 'basic',
+                title: 'Ignite Components',
+                type : 'group',
                 icon : 'heroicons_outline:chart-pie',
-                link : '/kitchen-sink/form-ignite',
+                children: [
+                    {
+                        id   : 'grid',
+                        title: 'Grid Ignite',
+                        type : 'basic',
+                        icon : 'heroicons_outline:chart-pie',
+                        link : '/kitchen-sink/grid-ignite',
+                    },
+                    {
+                        id   : 'form',
+                        title: 'Form Ignite',
+                        type : 'basic',
+                        icon : 'heroicons_outline:chart-pie',
+                        link : '/kitchen-sink/form-ignite',
+                    }
+                ]
             },
             {
                 id   : 'example',
