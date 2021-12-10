@@ -3,8 +3,8 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'app/shared/shared.module';
 import { KitchenSinkComponent } from './kitchen-sink.component';
 import { kitchenSinkRoutes } from './kitchen-sink.routing';
-import { FormMaterialComponent } from './form-material.component';
-import { FormIgniteComponent } from './form-ignite.component';
+import { FormMaterialComponent } from './material/form/form-material.component';
+import { FormIgniteComponent } from './ignite/form/form-ignite.component';
 
 // Material
 import { MatButtonModule } from '@angular/material/button';
@@ -13,7 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 // Ignite
-import { IgxInputGroupModule, IgxSelectModule } from 'igniteui-angular';
+import { IgxCheckboxModule, IgxChipsModule, IgxIconModule, IgxInputGroupModule, IgxSelectModule } from 'igniteui-angular';
 
 @NgModule({
     imports     : [
@@ -27,6 +27,9 @@ import { IgxInputGroupModule, IgxSelectModule } from 'igniteui-angular';
         MatSelectModule,
 
         // Ignite
+        IgxCheckboxModule,
+        IgxChipsModule,
+        IgxIconModule,
         IgxInputGroupModule,
         IgxSelectModule,
     ],

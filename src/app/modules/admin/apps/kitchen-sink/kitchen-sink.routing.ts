@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
 import { KitchenSinkComponent } from './kitchen-sink.component';
-import { FormMaterialComponent } from './form-material.component';
-import { FormIgniteComponent } from './form-ignite.component';
+import { FormMaterialComponent } from './material/form/form-material.component';
+import { FormIgniteComponent } from './ignite/form/form-ignite.component';
 
 export const kitchenSinkRoutes: Route[] = [
     {

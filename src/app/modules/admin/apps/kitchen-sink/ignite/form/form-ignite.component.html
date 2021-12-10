@@ -80,8 +80,23 @@
                         {{item}}
                     </igx-select-item>
                 </igx-select>
-            </div>
 
+                <igx-checkbox checked="true">
+                    Simple checkbox
+                </igx-checkbox>
+
+                <div class="col-span-2">
+                    <igx-chip
+                        *ngFor="let chip of chipList"
+                        [id]="chip.id"
+                        [selectable]="true"
+                        [removable]="true"
+                        (remove)="chipRemoved($event)">
+                        <igx-icon igxPrefix>{{chip.icon}}</igx-icon>
+                        {{chip.text}}
+                    </igx-chip>
+                </div>
+            </div>
 
         </div>
 
