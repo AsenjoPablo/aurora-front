@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders } from '@angular/common/http';
+//import { HttpHeaders } from '@angular/common/http';
 import { log } from '@aurora/shared/log';
 import { HttpLink } from 'apollo-angular/http';
 import { v4 as uuidv4 } from 'uuid';
 
 
-import { GraphQLError, Credentials, HttpHeader } from '@horus/types/core.types';
-import { ApolloLink, InMemoryCache, onError } from '@apollo/client/core';
-import { setContext } from 'apollo-link-context';
+// import { GraphQLError, Credentials, HttpHeader } from '@horus/types/core.types';
+import { ApolloLink, InMemoryCache } from '@apollo/client/core';
+// import { setContext } from 'apollo-link-context';
 import { environment } from 'environments/environment';
-import * as moment from 'moment-timezone';
+// import * as moment from 'moment-timezone';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ApolloService
 {
-    private httpHeaders: HttpHeader = {};
+    // private httpHeaders: HttpHeader = {};
 
     // accessors
-    get headers()
+    /* get headers()
     {
         let httpHeaders = new HttpHeaders();
         for (const httpHeaderKey in this.httpHeaders)
@@ -27,13 +27,13 @@ export class ApolloService
             httpHeaders = httpHeaders.set(httpHeaderKey, this.httpHeaders[httpHeaderKey]);
         }
         return httpHeaders;
-    }
+    } */
 
     constructor(
         private httpLink: HttpLink,
     ) { }
 
-    addHttpHeader(httpHeader: HttpHeader)
+    /* addHttpHeader(httpHeader: HttpHeader)
     {
         this.httpHeaders = Object.assign({}, this.httpHeaders, httpHeader);
     }
@@ -44,7 +44,7 @@ export class ApolloService
         {
             delete this.httpHeaders[httpHeaderKey];
         }
-    }
+    } */
 
     apolloFactory() {
         // return this._liveApolloFactory();
@@ -81,7 +81,7 @@ export class ApolloService
         });
 
         // manage jwt and refresh token
-        const auth = setContext(async (_, { headers }) =>
+        /* const auth = setContext(async (_, { headers }) =>
         {
             // add guest timezone to request
             this.addHttpHeader({ 'X-Timezone': moment.tz.guess() });
@@ -89,10 +89,10 @@ export class ApolloService
             return {
                 headers: this.httpHeaders
             };
-        });
+        }); */
 
         // manage errors
-        const error = onError(({ graphQLErrors, networkError, operation, forward }) =>
+       /*  const error = onError(({ graphQLErrors, networkError, operation, forward }) =>
         {
             // network error
             if (networkError)
@@ -121,9 +121,9 @@ export class ApolloService
                     }
                 });
             }
-        });
+        }); */
 
-        return {
+        /* return {
             name: 'live',
             link: ApolloLink.from([auth, error, httpLink as any]),
             cache: cache,
@@ -140,6 +140,12 @@ export class ApolloService
                     errorPolicy: 'all'
                 }
             }
-        };
+        }; */
+
+        return {
+            name : 'live',
+            cache: cache,
+            link : httpLink,
+        }
     }
 }
