@@ -188,7 +188,7 @@ export class ViewListComponent extends ViewBaseComponent implements OnInit
 
     onFilterChange(event: CompositeFilterDescriptor): void
     {
-        log('[DEBUG] documentList filter change', event);
+        log('[DEBUG] DocumentList filter change', event);
 
         this.filters = event;
         this.pagination = { page: 0, size: 10 };
@@ -197,7 +197,7 @@ export class ViewListComponent extends ViewBaseComponent implements OnInit
 
     onPageChange(event: PageChangeEvent): void
     {
-        log('[DEBUG] onPageChange', event);
+        log('[DEBUG] OnPageChange', event);
 
         this.pagination = { page: event.skip === 0 ? 0 : Math.trunc(event.skip / event.take), size: event.take };
         this.getGridData();
@@ -205,7 +205,7 @@ export class ViewListComponent extends ViewBaseComponent implements OnInit
 
     onSortChange(event: SortDescriptor[]): void
     {
-        log('[DEBUG] onSortChange', event);
+        log('[DEBUG] OnSortChange', event);
 
         this.sorting = event.length > 0 && event[0].dir ? event[0] : undefined;
         this.getGridData();
