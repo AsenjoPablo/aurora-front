@@ -51,6 +51,11 @@
                     }
                 ],
                 "@typescript-eslint/no-inferrable-types": "off",
+                "@typescript-eslint/type-annotation-spacing": ["error", {
+                    "before": true,
+                    "after": true,
+                    "overrides": true
+                }],
                 "arrow-parens": [
                     "error",
                     "as-needed",
@@ -58,11 +63,32 @@
                         "requireForBlockBody": true
                     }
                 ],
-                "brace-style": [
-                    "off",
-                    "off"
-                ],
+                "brace-style": ["error", "allman", { "allowSingleLine": true }],
+                "comma-dangle": ["error", {
+                    "arrays": "only-multiline",
+                    "objects": "only-multiline",
+                    "imports": "only-multiline",
+                    "exports": "only-multiline",
+                    "functions": "only-multiline"
+                }],
+                "curly": "off",
+                "grouped-accessor-pairs": ["error", "setBeforeGet"],
                 "import/order": "off",
+                "key-spacing": ["error", {
+                    "singleLine": {
+                        "beforeColon": false,
+                        "afterColon": true
+                    },
+                    "multiLine": {
+                        "beforeColon": false,
+                        "afterColon": true
+                    },
+                    "align": {
+                        "beforeColon": false,
+                        "afterColon": true,
+                        "on": "colon"
+                    }
+                }],
                 "max-len": [
                     "error",
                     {
@@ -71,6 +97,7 @@
                     }
                 ],
                 "no-underscore-dangle": "off",
+                "object-curly-spacing": ["error", "always", { "objectsInObjects": false, "arraysInObjects": false }],
                 "object-shorthand": "off",
                 "quote-props": [
                     "error",
