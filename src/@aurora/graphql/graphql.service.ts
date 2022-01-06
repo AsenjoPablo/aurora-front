@@ -1,15 +1,17 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Apollo } from 'apollo-angular';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ApolloService
+export class GraphqlService
 {
     constructor(
-       
+        private apollo: Apollo,
     ) { }
 
-    
+    client(): Apollo
+    {
+        return this.apollo;
+    }
 }
