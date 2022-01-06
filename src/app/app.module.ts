@@ -6,6 +6,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import { FuseModule } from '@fuse';
 import { FuseConfigModule } from '@fuse/services/config';
 import { FuseMockApiModule } from '@fuse/lib/mock-api';
+import { AuroraModule } from '@aurora/aurora.module';
 import { CoreModule } from 'app/core/core.module';
 import { appConfig } from 'app/core/config/app.config';
 import { mockApiServices } from 'app/mock-api';
@@ -37,6 +38,9 @@ const routerConfig: ExtraOptions = {
 
         // Layout module of your application
         LayoutModule,
+
+        //
+        AuroraModule,
 
         // 3rd party modules that require global configuration via forRoot
         MarkdownModule.forRoot({})
