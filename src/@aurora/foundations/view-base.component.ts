@@ -22,12 +22,14 @@ import { Center, DocumentMasters, Lang, RouteData, Session } from 'app/main/adam
 
 // RxJs & NgRx
 import { Observable, Subject } from 'rxjs';
+import { GraphqlService } from '@aurora/graphql/graphql.service';
 
 @Directive()
 export class ViewBaseComponent implements OnDestroy
 {
     fb: FormBuilder;                                                // form builder
     fg!: FormGroup;                                                 // form group
+    graphqlService: GraphqlService;                                 // Http service to do API request
     unsubscribeAll$: Subject<void> = new Subject();                 // subject to destroy all subscriptions in ngOnDestroy life cycle
 
     /*
@@ -75,6 +77,7 @@ export class ViewBaseComponent implements OnDestroy
     )
     {
         this.fb                             = this.injector.get(FormBuilder);
+        this.graphqlService                 = this.injector.get(GraphqlService);
 
         /*
         this.httpService                    = this.injector.get(HttpService);
