@@ -3,49 +3,11 @@ import { FuseNavigationItem } from '@fuse/components/navigation';
 
 export const defaultNavigation: FuseNavigationItem[] = [
     {
-        id      : 'kitchen-sink',
-        title   : 'KitchenSink',
-        subtitle: 'Demo Web Components',
-        type    : 'group',
-        icon    : 'heroicons_outline:home',
-        children: [
-            {
-                id   : 'form',
-                title: 'Form Material',
-                type : 'basic',
-                icon : 'heroicons_outline:chart-pie',
-                link : '/kitchen-sink/form-material',
-            },
-            {
-                id   : 'form',
-                title: 'Ignite Components',
-                type : 'group',
-                icon : 'heroicons_outline:chart-pie',
-                children: [
-                    {
-                        id   : 'grid',
-                        title: 'Grid Ignite',
-                        type : 'basic',
-                        icon : 'heroicons_outline:chart-pie',
-                        link : '/kitchen-sink/grid-ignite',
-                    },
-                    {
-                        id   : 'form',
-                        title: 'Form Ignite',
-                        type : 'basic',
-                        icon : 'heroicons_outline:chart-pie',
-                        link : '/kitchen-sink/form-ignite',
-                    }
-                ]
-            },
-            {
-                id   : 'example',
-                title: 'Example',
-                type : 'basic',
-                icon : 'heroicons_outline:chart-pie',
-                link : '/example',
-            },
-        ]
+        id   : 'example',
+        title: 'Example',
+        type : 'basic',
+        icon : 'heroicons_outline:chart-pie',
+        link : '/example'
     }
 ];
 export const compactNavigation: FuseNavigationItem[] = [
