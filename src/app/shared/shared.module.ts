@@ -10,7 +10,7 @@ import { MaterialModule } from '@aurora';
         ReactiveFormsModule,
 
         // @aurora
-        //MaterialModule,
+        MaterialModule,
     ],
     exports: [
         CommonModule,
@@ -18,7 +18,7 @@ import { MaterialModule } from '@aurora';
         ReactiveFormsModule,
 
         // @aurora
-        //MaterialModule,
+        MaterialModule,
     ]
 })
 export class SharedModule
