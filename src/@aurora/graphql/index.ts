@@ -1,3 +1,4 @@
 export { ApolloModule } from './apollo.module';
-export { GraphQLStatement } from './graphql.types';
-export { GraphQLStatementStore } from './graphql-statement-store.decorator';
+export { GraphQLService } from './graphql.service';
+export { GraphQLStatements } from './graphql.types';
+export { GraphQLStatementsRepository } from './graphql-statements-repository.decorator';

@@ -4,22 +4,23 @@ import { Store } from '@ngrx/store';
 
 // RxJs & NgRx
 import { Observable, Subject } from 'rxjs';
-import { GraphqlService } from '@aurora/graphql/graphql.service';
+import { GraphQLService, GraphQLStatements } from '@aurora/graphql';
 
 @Directive()
 export class ViewBaseComponent implements OnDestroy
 {
     fb: FormBuilder;                                                // form builder
     fg!: FormGroup;                                                 // form group
-    graphqlService: GraphqlService;                                 // Http service to do API request
+    graphqlService: GraphQLService;                                 // Http service to do API request
     unsubscribeAll$: Subject<void> = new Subject();                 // subject to destroy all subscriptions in ngOnDestroy life cycle
+    graphQLStatements: GraphQLStatements;
 
     constructor(
         protected injector: Injector,                            // Injector
     )
     {
         this.fb                             = this.injector.get(FormBuilder);
-        this.graphqlService                 = this.injector.get(GraphqlService);
+        this.graphqlService                 = this.injector.get(GraphQLService);
 
         /*
         this.httpService                    = this.injector.get(HttpService);

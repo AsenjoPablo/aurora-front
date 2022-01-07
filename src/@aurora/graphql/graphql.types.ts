@@ -1,6 +1,6 @@
 import { DocumentNode } from 'graphql';
 
-export interface GraphQLStatement
+export interface GraphQLStatements
 {
     fields: string;
     relationsFields?: string

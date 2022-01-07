@@ -1,9 +1,12 @@
 import { Directive, Injector, OnInit } from '@angular/core';
-import { log } from '@aurora';
+import { GridDataResult, log } from '@aurora';
+import { first, lastValueFrom, take } from 'rxjs';
 import { ViewBaseComponent } from './view-base.component';
 @Directive()
-export class ViewListComponent extends ViewBaseComponent implements OnInit
+export class ViewListComponent extends ViewBaseComponent
 {
+    gridData: string;
+
     constructor(
         protected injector: Injector,
     )
@@ -11,22 +14,30 @@ export class ViewListComponent extends ViewBaseComponent implements OnInit
         super(injector);
     }
 
-    ngOnInit(): void
+   /*  ngOnInit(): void
     {
-
+        this.getGridData();
     }
 
-    getGridData(): void
+    async getGridData()
     {
-        /* const observable = this.graphqlService
+        log('[DEBUG] ');
+
+        const observable = this.graphqlService
             .client()
-            .watchQuery({
-                query: graphQL.queryObjects,
+            .watchQuery<{corePagination: GridDataResult}>({
+                query: this.graphQLStatements.queryObjectPagination,
                 variables: {}
             })
             .valueChanges
-            .pipe(
-                first()
-            ); */
-    }
+            .pipe(take(1));
+            .subscribe(result => {
+                console.log(result.data.corePagination);
+                this.gridData = result.data.corePagination;
+            }); 
+
+            this.gridData = (await lastValueFrom(observable)).data.corePagination;
+
+            console.log(this.gridData);
+    } */
 }
