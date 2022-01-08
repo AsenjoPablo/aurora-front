@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 // Common module
 import { commonRoutes } from './common.routing';
 import { CommonComponent } from './common.component';
+import { CountryListComponent } from './country/country-list.component';
 import { LangListComponent } from './lang/lang-list.component';
 
 @NgModule({
@@ -28,8 +29,10 @@ import { LangListComponent } from './lang/lang-list.component';
     declarations: [
         CommonComponent,
 
-        // lang
+        // Common components
+        CountryListComponent,
         LangListComponent,
+
     ],
 })
 export class CommonModule

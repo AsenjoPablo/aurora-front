@@ -1,16 +1,16 @@
 
 import { ChangeDetectionStrategy, Component, Injector, ViewEncapsulation } from '@angular/core';
 import { ColumnConfig, ColumnDataType, GraphQLStatementsRepository, ViewListComponent } from '@aurora';
-import { graphQL } from './lang.graphql';
+import { graphQL } from './country.graphql';
 
 @Component({
-    selector     : 'common-lang-list',
-    templateUrl  : './lang-list.component.html',
+    selector     : 'common-country-list',
+    templateUrl  : './country-list.component.html',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 @GraphQLStatementsRepository(graphQL)
-export class LangListComponent extends ViewListComponent
+export class CountryListComponent extends ViewListComponent
 {
     columnsConfig: ColumnConfig[] = [
         {
@@ -19,7 +19,7 @@ export class LangListComponent extends ViewListComponent
         },
         {
             type: ColumnDataType.STRING,
-            field: 'ietf',
+            field: 'iso3166Alpha2',
         }
     ];
 

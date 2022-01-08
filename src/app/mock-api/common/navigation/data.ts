@@ -15,6 +15,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 icon    : 'heroicons_outline:cog',
                 children: [
                     {
+                        id   : 'country',
+                        title: 'Countries',
+                        type : 'basic',
+                        icon : 'heroicons_outline:translate',
+                        link : '/common/country',
+                    },
+                    {
                         id   : 'lang',
                         title: 'Languages',
                         type : 'basic',
