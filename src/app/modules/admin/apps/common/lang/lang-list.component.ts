@@ -1,31 +1,35 @@
 
-import { Component, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Injector, ViewEncapsulation } from '@angular/core';
+import { ColumnConfig, ColumnDataType, GraphQLStatementsRepository, ViewListComponent } from '@aurora';
+import { graphQL } from './lang.graphql';
 
 @Component({
     selector     : 'common-lang-list',
     templateUrl  : './lang-list.component.html',
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LangListComponent
+@GraphQLStatementsRepository(graphQL)
+export class LangListComponent extends ViewListComponent
 {
-    gridData: string;
+    columnsConfig: ColumnConfig[] = [
+        {
+            type: ColumnDataType.STRING,
+            field: 'name',
+        },
+        {
+            type: ColumnDataType.STRING,
+            field: 'ietf',
+        }
+    ];
 
     /**
      * Constructor
      */
-    constructor()
+    constructor(
+        protected injector: Injector
+    )
     {
-    }
-
-    ngOnInit(): void
-    {
-        console.log("pasa 01");
-        this.gridData = "adios";
-
-
-        setTimeout(() => { 
-            console.log("pasa 03");
-            this.gridData = "hola"; 
-        }, 5000);
+        super(injector);
     }
 }
