@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from 'app/shared/shared.module';
 
 // Material
 import { MatButtonModule } from '@angular/material/button';
@@ -15,6 +16,7 @@ import { LangListComponent } from './lang/lang-list.component';
 @NgModule({
     imports: [
         RouterModule.forChild(commonRoutes),
+        SharedModule,
 
         // Material
         MatButtonModule,
