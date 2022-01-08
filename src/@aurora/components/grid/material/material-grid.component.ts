@@ -1,23 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ColumnConfig, GridDataResult } from '../grid.types';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ColumnConfig, ColumnDataType, GridData } from '../grid.types';
 import cloneDeep from 'lodash-es/cloneDeep';
 
 @Component({
     selector   : 'material-grid',
     templateUrl: './material-grid.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MaterialGridComponent implements OnInit
 {
-    private _data: any[];
-    @Input() set data(data: any[])
-    {
-        console.log(data);
-        this._data = data;
-    }
-    get data(): any[]
-    {
-        return this._data;
-    }
+    @Input() data: GridData;
 
     // clone columnsConfig to can reset columnsConfig to original status
     private _columnsConfig: ColumnConfig[] = [];
@@ -37,6 +29,8 @@ export class MaterialGridComponent implements OnInit
     {
         return this.columnsConfig.filter(item => !item.hidden).map(item => item.field);
     }
+
+    columnConfigType = ColumnDataType;
 
     ngOnInit(): void
     {

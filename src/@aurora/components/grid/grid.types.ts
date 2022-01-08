@@ -1,4 +1,4 @@
-export interface GridDataResult
+export interface GridData
 {
     /**
      * The total number of records filtered.
@@ -18,6 +18,15 @@ export interface GridDataResult
 
 export interface ColumnConfig
 {
+    type: ColumnDataType;
     field?: string;
     hidden?: boolean;
+}
+
+export enum ColumnDataType
+{
+    ACTIONS,
+    NUMBER,
+    DATE,
+    STRING,
 }

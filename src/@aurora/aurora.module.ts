@@ -1,9 +1,11 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { ApolloModule } from './graphql/apollo.module';
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
     imports  : [
         ApolloModule,
+        PipesModule,
     ]
 })
 export class AuroraModule

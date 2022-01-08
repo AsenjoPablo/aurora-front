@@ -1,20 +1,21 @@
-<table mat-table [dataSource]="data">
+<table mat-table [dataSource]="data?.rows">
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Field </th>
-        <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
-    </ng-container>
+    <ng-container *ngFor="let columnConfig of columnsConfig">
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="ietf">
-        <th mat-header-cell *matHeaderCellDef> ietf </th>
-        <td mat-cell *matCellDef="let element"> {{ element.ietf }} </td>
+        <!-- ngSwitch for grid cell -->
+        <ng-container matColumnDef="{{ columnConfig.field }}">
+            <th mat-header-cell *matHeaderCellDef> {{ columnConfig.field }} </th>
+
+            <ng-container *ngIf="columnConfig.type === columnConfigType.STRING">
+                <td mat-cell *matCellDef="let element">{{ element | get:columnConfig.field }}</td>
+            </ng-container>
+
+        </ng-container>
+        <!-- / ngSwitch for grid cell -->
+
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
 </table>
-
-{{ data | json }}

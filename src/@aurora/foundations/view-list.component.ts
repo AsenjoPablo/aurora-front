@@ -1,11 +1,12 @@
 import { Directive, Injector, OnInit } from '@angular/core';
-import { GridDataResult, log } from '@aurora';
-import { first } from 'rxjs';
+import { GridData, log } from '@aurora';
+import { first, map, Observable } from 'rxjs';
 import { ViewBaseComponent } from './view-base.component';
+
 @Directive()
 export class ViewListComponent extends ViewBaseComponent
 {
-    gridData: GridDataResult;
+    gridData$: Observable<GridData>;
 
     constructor(
         protected injector: Injector,
@@ -21,19 +22,13 @@ export class ViewListComponent extends ViewBaseComponent
 
     async getGridData()
     {
-        log('[DEBUG] ');
-
-        const observable = this.graphqlService
+        this.gridData$ = this.graphqlService
             .client()
-            .watchQuery<{corePagination: GridDataResult}>({
+            .watchQuery<{ corePagination: GridData; }>({
                 query: this.graphQLStatements.queryObjectPagination,
                 variables: {}
             })
             .valueChanges
-            .pipe(first())
-            .subscribe(result =>
-            {
-                this.gridData = result.data.corePagination;
-            });
+            .pipe(map<{ data: { corePagination: GridData; }}, GridData>(result => result.data.corePagination));
     }
 }
