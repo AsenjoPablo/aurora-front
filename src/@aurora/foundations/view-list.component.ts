@@ -1,11 +1,11 @@
 import { Directive, Injector, OnInit } from '@angular/core';
 import { GridDataResult, log } from '@aurora';
-import { first, lastValueFrom, take } from 'rxjs';
+import { first } from 'rxjs';
 import { ViewBaseComponent } from './view-base.component';
 @Directive()
 export class ViewListComponent extends ViewBaseComponent
 {
-    gridData: string;
+    gridData: GridDataResult;
 
     constructor(
         protected injector: Injector,
@@ -14,7 +14,7 @@ export class ViewListComponent extends ViewBaseComponent
         super(injector);
     }
 
-   /*  ngOnInit(): void
+    ngOnInit(): void
     {
         this.getGridData();
     }
@@ -30,14 +30,10 @@ export class ViewListComponent extends ViewBaseComponent
                 variables: {}
             })
             .valueChanges
-            .pipe(take(1));
-            .subscribe(result => {
-                console.log(result.data.corePagination);
+            .pipe(first())
+            .subscribe(result =>
+            {
                 this.gridData = result.data.corePagination;
-            }); 
-
-            this.gridData = (await lastValueFrom(observable)).data.corePagination;
-
-            console.log(this.gridData);
-    } */
+            });
+    }
 }
