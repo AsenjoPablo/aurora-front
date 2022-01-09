@@ -4,7 +4,7 @@ export interface GraphQLStatements
 {
     fields: string;
     relationsFields?: string
-    queryObjectPagination?: DocumentNode;
+    queryPagination?: DocumentNode;
     queryObjectRelations?: DocumentNode;
     queryObjects?: DocumentNode;
     queryObject?: DocumentNode;
