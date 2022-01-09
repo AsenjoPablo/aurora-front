@@ -1,7 +1,10 @@
 
 import { ChangeDetectionStrategy, Component, Injector, ViewEncapsulation } from '@angular/core';
-import { ColumnConfig, ColumnDataType, GraphQLStatementsRepository, ViewListComponent } from '@aurora';
+import { ColumnConfig, ColumnDataType, GraphQLStatementsRepository, GridData, ViewListComponent } from '@aurora';
+import { Observable } from 'rxjs';
+import { Country } from '../common.types';
 import { graphQL } from './country.graphql';
+import { CountryService } from './country.service';
 
 @Component({
     selector     : 'common-country-list',
@@ -12,6 +15,7 @@ import { graphQL } from './country.graphql';
 @GraphQLStatementsRepository(graphQL)
 export class CountryListComponent extends ViewListComponent
 {
+    gridData$: Observable<GridData<Country>>;
     columnsConfig: ColumnConfig[] = [
         {
             type: ColumnDataType.STRING,
@@ -24,9 +28,15 @@ export class CountryListComponent extends ViewListComponent
     ];
 
     constructor(
-        protected injector: Injector
+        protected injector: Injector,
+        private countryService: CountryService
     )
     {
         super(injector);
+    }
+
+    ngOnInit(): void
+    {
+        this.gridData$ = this.countryService.pagination$
     }
 }

@@ -32,9 +32,9 @@ export const graphQL: GraphQLStatements = {
     fields,
     relationsFields,
 
-    queryObjectPagination: gql`
+    queryPagination: gql`
         query CommonPaginateCountries ($query:QueryStatement) {
-            corePagination: commonPaginateCountries (query:$query) {
+            pagination: commonPaginateCountries (query:$query) {
                 total
                 rows
                 count
@@ -46,7 +46,7 @@ export const graphQL: GraphQLStatements = {
 
     queryObjects: gql`
         query CommonGetCountries ($query:QueryStatement) {
-            coreObjects: commonGetCountries (query:$query) {
+            objects: commonGetCountries (query:$query) {
                 ${fields}
             }
             ${relationsFields}
@@ -55,7 +55,7 @@ export const graphQL: GraphQLStatements = {
 
     queryObject: gql`
         query CommonFindCountry ($query:QueryStatement) {
-            coreObject: commonFindCountry (query:$query) {
+            object: commonFindCountry (query:$query) {
                 ${fields}
             }
             ${relationsFields}

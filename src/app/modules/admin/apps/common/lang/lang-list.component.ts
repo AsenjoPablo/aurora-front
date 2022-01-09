@@ -1,6 +1,8 @@
 
 import { ChangeDetectionStrategy, Component, Injector, ViewEncapsulation } from '@angular/core';
-import { ColumnConfig, ColumnDataType, GraphQLStatementsRepository, ViewListComponent } from '@aurora';
+import { ColumnConfig, ColumnDataType, GraphQLStatementsRepository, GridData, ViewListComponent } from '@aurora';
+import { Observable } from 'rxjs';
+import { Lang } from '../common.types';
 import { graphQL } from './lang.graphql';
 
 @Component({
@@ -12,6 +14,7 @@ import { graphQL } from './lang.graphql';
 @GraphQLStatementsRepository(graphQL)
 export class LangListComponent extends ViewListComponent
 {
+    gridData$: Observable<GridData<Lang>>;
     columnsConfig: ColumnConfig[] = [
         {
             type: ColumnDataType.STRING,

@@ -1,6 +1,7 @@
 import { Route } from '@angular/router';
 import { CommonComponent } from './common.component';
 import { CountryListComponent } from './country/country-list.component';
+import { CountryListResolver } from './country/country.resolvers';
 import { LangListComponent } from './lang/lang-list.component';
 import { LangListResolver } from './lang/lang.resolvers';
 
@@ -20,7 +21,10 @@ export const commonRoutes: Route[] = [
             {
                 path     : 'country',
                 pathMatch: 'full',
-                component: CountryListComponent
+                component: CountryListComponent,
+                resolve : {
+                    data: CountryListResolver
+                }
             },
         ]
     }
