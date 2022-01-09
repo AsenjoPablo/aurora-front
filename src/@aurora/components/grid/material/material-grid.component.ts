@@ -1,7 +1,9 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, Input, OnInit, ViewChild } from '@angular/core';
-import { ColumnConfig, ColumnDataType, GridData } from '../grid.types';
+import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { ColumnConfig, ColumnDataType, GridData, PageChangeEvent } from '../grid.types';
 import cloneDeep from 'lodash-es/cloneDeep';
 import { MatPaginator } from '@angular/material/paginator';
+import { merge, switchMap, tap } from 'rxjs';
+
 
 @Component({
     selector   : 'material-grid',
@@ -31,6 +33,8 @@ export class MaterialGridComponent implements OnInit, AfterViewInit
         return this.columnsConfig.filter(item => !item.hidden).map(item => item.field);
     }
 
+    @Output() pageChange = new EventEmitter<PageChangeEvent>();
+
     @ViewChild(MatPaginator) private paginator: MatPaginator;
 
     columnConfigType = ColumnDataType;
@@ -41,5 +45,18 @@ export class MaterialGridComponent implements OnInit, AfterViewInit
 
     ngAfterViewInit(): void
     {
+        if (this.paginator)
+        {
+            merge(this.paginator.page)
+                .pipe(
+                    tap(() => this.pageChange.emit({
+                        count: this.paginator.length,
+                        offset: this.paginator.pageIndex * this.paginator.pageSize,
+                        limit: this.paginator.pageSize,
+                    })),
+                    tap(() => console.log(this.paginator)),
+                )
+                .subscribe();
+        }
     }
 }

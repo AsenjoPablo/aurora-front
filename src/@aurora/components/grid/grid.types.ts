@@ -1,4 +1,4 @@
-export interface GridData
+export interface GridData<T = any>
 {
     /**
      * The total number of records filtered.
@@ -13,7 +13,7 @@ export interface GridData
     /**
      * The data that will be rendered by the Grid as an array.
      */
-    rows: any[];
+    rows: T[];
 }
 
 export interface ColumnConfig
@@ -29,4 +29,11 @@ export enum ColumnDataType
     NUMBER,
     DATE,
     STRING,
+}
+
+export interface PageChangeEvent
+{
+    count: number;
+    offset: number;
+    limit: number;
 }
