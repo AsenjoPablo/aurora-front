@@ -29,4 +29,9 @@ export class LangListComponent extends ViewListComponent
     {
         super(injector);
     }
+
+    ngOnInit(): void
+    {
+        super.ngOnInit();
+    }
 }
