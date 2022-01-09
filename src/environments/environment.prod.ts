@@ -3,6 +3,6 @@ export const environment = {
     debug     : false,
     api       : {
         graphql    : 'https://license.vinipad.io/graphql',
-        rest       : 'ttp://localhost:9000',
+        rest       : 'https://license.vinipad.io',
     }
 };

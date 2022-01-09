@@ -1,6 +1,6 @@
 
 import { ChangeDetectionStrategy, Component, Injector, ViewEncapsulation } from '@angular/core';
-import { ColumnConfig, ColumnDataType, GraphQLStatementsRepository, GridData, ViewListComponent } from '@aurora';
+import { ColumnConfig, ColumnDataType, GraphQLStatementsRepository, GridData, PageChangeEvent, ViewListComponent } from '@aurora';
 import { Observable } from 'rxjs';
 import { Country } from '../common.types';
 import { graphQL } from './country.graphql';
@@ -38,5 +38,10 @@ export class CountryListComponent extends ViewListComponent
     ngOnInit(): void
     {
         this.gridData$ = this.countryService.pagination$
+    }
+
+    onPageChange($event: PageChangeEvent): void
+    {
+        this.countryService.getPagination($event).subscribe();
     }
 }

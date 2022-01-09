@@ -70,7 +70,8 @@
 
             <material-grid
                 [columnsConfig]="columnsConfig"
-                [data]="gridData$ | async">
+                [data]="gridData$ | async"
+                (pageChange)="onPageChange($event)">
             </material-grid>
 
         </div>

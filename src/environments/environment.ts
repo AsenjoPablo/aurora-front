@@ -7,7 +7,7 @@ export const environment = {
     debug     : true,
     api       : {
         graphql    : 'https://license.vinipad.io/graphql',
-        rest       : 'ttp://localhost:9000',
+        rest       : 'https://license.vinipad.io',
     }
 };
 
