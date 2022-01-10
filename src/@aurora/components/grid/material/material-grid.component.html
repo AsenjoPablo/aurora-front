@@ -1,15 +1,18 @@
 <div class="rounded-md overflow-hidden">
-    <table mat-table [dataSource]="data?.rows" class="w-full">
+    <table mat-table [dataSource]="data?.rows" matSort class="w-full">
 
         <ng-container *ngFor="let columnConfig of columnsConfig">
 
             <ng-container [matColumnDef]="columnConfig.field">
-                <th mat-header-cell *matHeaderCellDef class="min-w-lg">{{ columnConfig.field }}</th>
+                <th mat-header-cell
+                    [disabled]="!columnConfig.sort"
+                    *matHeaderCellDef
+                    [mat-sort-header]="columnConfig.sort">{{ columnConfig.field }}</th>
 
                 <!-- ngSwitch for grid cell -->
                 <ng-container [ngSwitch]="columnConfig.type">
                     <ng-container *ngSwitchCase="columnConfigType.STRING">
-                        <td mat-cell *matCellDef="let element" class="min-w-lg">{{ element | get:columnConfig.field }}</td>
+                        <td mat-cell *matCellDef="let element">{{ element | get:columnConfig.field }}</td>
                     </ng-container>
                 </ng-container>
                 <!-- / ngSwitch for grid cell -->
@@ -24,7 +27,7 @@
     </table>
 
     <mat-paginator  [length]="data.count"
-                    [pageSizeOptions]="[10, 20, 50]"
+                    [pageSizeOptions]="[20, 50, 100]"
                     showFirstLastButtons
                     aria-label="Select page of periodic elements">
     </mat-paginator>
