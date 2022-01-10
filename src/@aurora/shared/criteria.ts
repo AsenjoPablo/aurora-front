@@ -18,16 +18,18 @@ export class Criteria
             offset = 0,
             limit = 10,
             sort = 'name',
-            order = Order.ASC,
+            order = 'desc',
         }: {
             args?: QueryStatement;
             offset?: number;
             limit?: number;
             sort?: string | string[];
-            order?: Order;
+            order?: string;
         } = {}
     ): QueryStatement
     {
+        order = order === 'asc' ? Order.ASC : Order.DESC;
+
         return merge({
             limit,
             offset,

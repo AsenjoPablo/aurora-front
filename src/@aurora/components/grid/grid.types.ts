@@ -1,3 +1,5 @@
+import { Order } from "@aurora";
+
 export interface GridData<T = any>
 {
     /**
@@ -21,6 +23,7 @@ export interface ColumnConfig
     type: ColumnDataType;
     field?: string;
     hidden?: boolean;
+    sort?: string | string[];
 }
 
 export enum ColumnDataType
@@ -36,4 +39,6 @@ export interface PageChangeEvent
     count: number;
     offset: number;
     limit: number;
+    sort: string | string[];
+    order: string;
 }
