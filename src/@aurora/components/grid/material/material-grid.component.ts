@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ColumnConfig, ColumnDataType, GridData, PageChangeEvent } from '../grid.types';
 import cloneDeep from 'lodash-es/cloneDeep';
 import { MatPaginator } from '@angular/material/paginator';
@@ -10,6 +10,7 @@ import { Order } from '@aurora';
 @Component({
     selector   : 'material-grid',
     templateUrl: './material-grid.component.html',
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MaterialGridComponent implements OnInit, AfterViewInit

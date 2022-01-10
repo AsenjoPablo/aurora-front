@@ -24,6 +24,8 @@ export interface ColumnConfig
     field?: string;
     hidden?: boolean;
     sort?: string | string[];
+    headerClass?: string | string[];
+    sticky?: boolean;
 }
 
 export enum ColumnDataType
