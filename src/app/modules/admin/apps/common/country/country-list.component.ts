@@ -18,6 +18,12 @@ export class CountryListComponent extends ViewListComponent
     gridData$: Observable<GridData<Country>>;
     columnsConfig: ColumnConfig[] = [
         {
+            type: ColumnDataType.ACTIONS,
+            field: 'Actions',
+            headerClass: 'w-32',
+            sticky: true,
+        },
+        {
             type: ColumnDataType.STRING,
             field: 'name',
             sort: ['countryI18N', 'name'],
@@ -26,8 +32,52 @@ export class CountryListComponent extends ViewListComponent
             type: ColumnDataType.STRING,
             field: 'iso3166Alpha2',
             sort: 'iso3166Alpha2',
-            headerClass: 'w-44'
-        }
+        },
+        {
+            type: ColumnDataType.STRING,
+            field: 'iso3166Alpha3',
+            sort: 'iso3166Alpha3',
+        },
+        {
+            type: ColumnDataType.STRING,
+            field: 'iso3166Numeric',
+            sort: 'iso3166Numeric',
+        },
+        {
+            type: ColumnDataType.STRING,
+            field: 'customCode',
+            sort: 'customCode',
+        },
+        {
+            type: ColumnDataType.STRING,
+            field: 'image',
+            sort: 'image',
+        },
+        {
+            type: ColumnDataType.STRING,
+            field: 'prefix',
+            sort: 'prefix',
+        },
+        {
+            type: ColumnDataType.STRING,
+            field: 'sort',
+            sort: 'sort',
+        },
+        {
+            type: ColumnDataType.STRING,
+            field: 'latitude',
+            sort: 'latitude',
+        },
+        {
+            type: ColumnDataType.STRING,
+            field: 'longitude',
+            sort: 'longitude',
+        },
+        {
+            type: ColumnDataType.STRING,
+            field: 'zoom',
+            sort: 'zoom',
+        },
     ];
 
     constructor(
