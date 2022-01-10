@@ -3,16 +3,37 @@
 
         <ng-container *ngFor="let columnConfig of columnsConfig">
 
-            <ng-container [matColumnDef]="columnConfig.field">
+            <ng-container   [matColumnDef]="columnConfig.field"
+                            [sticky]="columnConfig.sticky">
+
                 <th mat-header-cell
-                    [disabled]="!columnConfig.sort"
                     *matHeaderCellDef
+                    [disabled]="!columnConfig.sort"
+                    [ngClass]="columnConfig.headerClass"
                     [mat-sort-header]="columnConfig.sort">{{ columnConfig.field }}</th>
 
                 <!-- ngSwitch for grid cell -->
                 <ng-container [ngSwitch]="columnConfig.type">
                     <ng-container *ngSwitchCase="columnConfigType.STRING">
                         <td mat-cell *matCellDef="let element">{{ element | get:columnConfig.field }}</td>
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="columnConfigType.ACTIONS">
+                        <td mat-cell *matCellDef="let element">
+                            <button mat-icon-button [matMenuTriggerFor]="menu">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item>
+                                    <mat-icon>mode_edit</mat-icon>
+                                    <span>XX</span>
+                                </button>
+                                <button mat-menu-item>
+                                    <mat-icon>delete</mat-icon>
+                                    <span>XX</span>
+                                </button>
+                            </mat-menu>
+                        </td>
                     </ng-container>
                 </ng-container>
                 <!-- / ngSwitch for grid cell -->
