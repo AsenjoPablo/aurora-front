@@ -39,14 +39,16 @@ export class CountryService
             offset?: number;
             limit?: number;
             sort?: string | string[];
-            order?: Order;
+            order?: string;
             filters?: QueryStatement,
             constraint?: QueryStatement,
         } = {}
     ): Observable<GridData<Country>>
     {
+        // adapt arguments to aurora SqlStatement
         args = Criteria.getPaginationArguments({ args, offset, limit, sort, order });
 
+        // get result, map ang throw data across observable
         return this.graphqlService
             .client()
             .watchQuery<{ pagination: GridData<Country>; }>({
