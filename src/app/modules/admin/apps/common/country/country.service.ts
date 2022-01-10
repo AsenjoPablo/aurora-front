@@ -31,7 +31,7 @@ export class CountryService
             offset = 0,
             limit = 10,
             sort = ['countryI18N', 'name'],
-            order = Order.ASC,
+            order = 'desc',
             filters = {},
             constraint = {},
         }: {

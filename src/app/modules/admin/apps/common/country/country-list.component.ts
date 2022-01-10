@@ -20,10 +20,12 @@ export class CountryListComponent extends ViewListComponent
         {
             type: ColumnDataType.STRING,
             field: 'name',
+            sort: ['countryI18N', 'name']
         },
         {
             type: ColumnDataType.STRING,
             field: 'iso3166Alpha2',
+            sort: 'iso3166Alpha2'
         }
     ];
 
