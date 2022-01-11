@@ -65,22 +65,27 @@
         class="flex flex-auto pt-6 px-6 sm:pt-10 sm:px-10 overflow-y-auto"
         cdkScrollable>
 
+        
+
         <div class="rounded-t-md bg-white w-full pt-4 px-4">
+            <form [formGroup]="fg" novalidate>
 
-            <div class="grid grid-cols-4 gap-4">
-                <mat-form-field appearance="outline">
-                    <mat-label>Input</mat-label>
-                    <input matInput>
-                </mat-form-field>
+                <div class="grid grid-cols-4 gap-4">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Input</mat-label>
+                        <input matInput formControlName="name">
+                    </mat-form-field>
 
-                <mat-form-field appearance="outline">
-                    <mat-label>Select</mat-label>
-                    <mat-select>
-                        <mat-option value="one">First option</mat-option>
-                        <mat-option value="two">Second option</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Select</mat-label>
+                        <mat-select>
+                            <mat-option value="one">First option</mat-option>
+                            <mat-option value="two">Second option</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+            </form>
 
         </div>
 

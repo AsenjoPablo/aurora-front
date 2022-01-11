@@ -10,6 +10,7 @@ import { graphQL } from './country.graphql';
 export class CountryService
 {
     private _pagination: BehaviorSubject<GridData<Country> | null> = new BehaviorSubject(null);
+    private _country: BehaviorSubject<Country | null> = new BehaviorSubject(null);
 
     constructor(
         private graphqlService: GraphQLService
@@ -18,11 +19,16 @@ export class CountryService
     }
 
     /**
-    * Getter for langs
+    * Getters
     */
     get pagination$(): Observable<GridData<Country>>
     {
         return this._pagination.asObservable();
+    }
+
+    get country$(): Observable<Country>
+    {
+        return this._country.asObservable();
     }
 
     getPagination(
@@ -65,33 +71,30 @@ export class CountryService
             );
     }
 
-
-     /**
-     * Get products
-     *
-     *
-     * @param page
-     * @param size
-     * @param sort
-     * @param order
-     * @param search
-     */
-    /* getProducts(page: number = 0, size: number = 10, sort: string = 'name', order: 'asc' | 'desc' | '' = 'asc', search: string = ''):
-    Observable<{ pagination: InventoryPagination; products: InventoryProduct[] }>
+    findById(
+        {
+            id = '',
+        }: {
+            id?: string;
+        } = {}
+    ): Observable<Country>
     {
-        return this._httpClient.get<{ pagination: InventoryPagination; products: InventoryProduct[] }>('api/apps/ecommerce/inventory/products', {
-            params: {
-                page: '' + page,
-                size: '' + size,
-                sort,
-                order,
-                search
-            }
-        }).pipe(
-            tap((response) => {
-                this._pagination.next(response.pagination);
-                this._products.next(response.products);
+        // adapt arguments to aurora SqlStatement
+        const args = Criteria.getFindByIdArguments({ id });
+
+        return this.graphqlService
+            .client()
+            .watchQuery<{ object: Country; }>({
+                query: graphQL.queryObject,
+                variables: {
+                    query: args
+                }
             })
-        );
-    } */
+            .valueChanges
+            .pipe(
+                first(),
+                map<{ data: { object: Country; }}, Country>(result => result.data.object),
+                tap((object: Country) => this._country.next(object))
+            );
+    }
 }

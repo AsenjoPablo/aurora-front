@@ -21,7 +21,7 @@ const fields = `
     administrativeAreaLevel1
     administrativeAreaLevel2
     administrativeAreaLevel3
-    dataCountry
+    dataLang
     createdAt
     updatedAt
 `;

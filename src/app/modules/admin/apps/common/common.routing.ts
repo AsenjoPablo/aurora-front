@@ -2,7 +2,7 @@ import { Route } from '@angular/router';
 import { CommonComponent } from './common.component';
 import { CountryDetailComponent } from './country/country-detail.component';
 import { CountryListComponent } from './country/country-list.component';
-import { CountryListResolver } from './country/country.resolvers';
+import { CountryDetailResolver, CountryListResolver } from './country/country.resolvers';
 import { LangListComponent } from './lang/lang-list.component';
 import { LangListResolver } from './lang/lang.resolvers';
 
@@ -31,7 +31,9 @@ export const commonRoutes: Route[] = [
                 path     : 'country/:id',
                 pathMatch: 'full',
                 component: CountryDetailComponent,
-                data: { name: 'editCommonCountry' }
+                resolve : {
+                    data: CountryDetailResolver
+                }
             },
         ]
     }

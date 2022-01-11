@@ -27,3 +27,26 @@ export class CountryListResolver implements Resolve<any>
         return this.countryService.getPagination();
     }
 }
+
+@Injectable({
+    providedIn: 'root'
+})
+export class CountryDetailResolver implements Resolve<any>
+{
+    constructor(
+        private countryService: CountryService
+    )
+    {
+    }
+
+    /**
+     * Resolver
+     *
+     * @param route
+     * @param state
+     */
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Country>
+    {
+        return this.countryService.findById({ id: route.paramMap.get('id') });
+    }
+}
