@@ -25,10 +25,12 @@
                                     <mat-icon>more_vert</mat-icon>
                                 </button>
                                 <mat-menu #menu="matMenu">
-                                    <button mat-menu-item>
-                                        <mat-icon>mode_edit</mat-icon>
-                                        <span>XX</span>
-                                    </button>
+                                    <ng-container *ngFor="let action of columnConfig.actions | getActions:element">
+                                        <button mat-menu-item (click)="onClickAction(action, element, $event)">
+                                            <mat-icon>mode_edit</mat-icon>
+                                            <span>{{ action.title }}</span>
+                                        </button>
+                                    </ng-container>
                                     <button mat-menu-item>
                                         <mat-icon>delete</mat-icon>
                                         <span>XX</span>
