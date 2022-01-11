@@ -62,19 +62,15 @@
 
     <!-- Main -->
     <div
-        class="flex-auto p-6 sm:p-10 overflow-y-auto"
+        class="flex flex-auto pt-6 px-6 sm:pt-10 sm:px-10 overflow-y-auto"
         cdkScrollable>
 
         <!-- CONTENT GOES HERE -->
-        <div>
-
-            <material-grid
-                [columnsConfig]="columnsConfig"
-                [data]="gridData$ | async"
-                (pageChange)="onPageChange($event)">
-            </material-grid>
-
-        </div>
+        <material-grid
+            [columnsConfig]="columnsConfig"
+            [data]="gridData$ | async"
+            (pageChange)="onPageChange($event)">
+        </material-grid>
 
     </div>
 

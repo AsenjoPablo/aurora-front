@@ -82,7 +82,7 @@ export class CountryListComponent extends ViewListComponent
 
     constructor(
         protected injector: Injector,
-        private countryService: CountryService
+        private countryService: CountryService,
     )
     {
         super(injector);
