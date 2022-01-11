@@ -4,8 +4,6 @@ import cloneDeep from 'lodash-es/cloneDeep';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { merge, tap } from 'rxjs';
-import { Order } from '@aurora';
-
 
 @Component({
     selector   : 'material-grid',
