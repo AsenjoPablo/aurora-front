@@ -26,6 +26,14 @@ export interface ColumnConfig
     sort?: string | string[];
     headerClass?: string | string[];
     sticky?: boolean;
+    actions?: (item: any) => ColumnConfigAction[];
+}
+
+export interface ColumnConfigAction
+{
+    id: string;
+    icon: string;
+    title: string;
 }
 
 export enum ColumnDataType
