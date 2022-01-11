@@ -1,9 +1,10 @@
 
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
-import { ColumnConfig, ColumnDataType, GraphQLStatementsRepository, GridData, PageChangeEvent, ViewListComponent } from '@aurora';
+import { Router } from '@angular/router';
+import { ActionEvent, ColumnConfig, ColumnDataType, GraphQLStatementsRepository, GridAction, GridData, PageChangeEvent, ViewListComponent } from '@aurora';
+import { RouteRepositoryService } from '@aurora/routing/route-repository.service';
 import { Observable } from 'rxjs';
 import { Country } from '../common.types';
-import { graphQL } from './country.graphql';
 import { CountryService } from './country.service';
 
 @Component({
@@ -23,11 +24,13 @@ export class CountryListComponent
             sticky: true,
             actions: () =>
             {
-                return [{
-                    id: '',
-                    icon: '',
-                    title: ''
-                }];
+                return [
+                    {
+                        id: 'edit',
+                        icon: 'mode_edit',
+                        title: 'Edit',
+                    }
+                ];
             }
         },
         {
@@ -88,7 +91,8 @@ export class CountryListComponent
     ];
 
     constructor(
-        private countryService: CountryService,
+        private router: Router,
+        private countryService: CountryService
     ) {}
 
     ngOnInit(): void
@@ -99,5 +103,15 @@ export class CountryListComponent
     onPageChange($event: PageChangeEvent): void
     {
         this.countryService.getPagination($event).subscribe();
+    }
+
+    onRunAction(event: GridAction)
+    {
+        switch (event.action.action.id)
+        {
+            case 'edit':
+                this.router.navigate(['common/country', event.action.data.id]);
+                break;
+        }
     }
 }
