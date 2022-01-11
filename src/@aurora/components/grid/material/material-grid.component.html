@@ -1,5 +1,5 @@
 <div class="flex flex-col flex-1">
-    <div class="rounded-md overflow-auto">
+    <div class="rounded-t-md overflow-auto">
         <table mat-table [dataSource]="data?.rows" matSort class="w-full flex-1">
 
             <ng-container *ngFor="let columnConfig of columnsConfig">
@@ -47,11 +47,12 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
         </table>
-
-        <mat-paginator  [length]="data.count"
-                        [pageSizeOptions]="[20, 50, 100]"
-                        showFirstLastButtons
-                        aria-label="Select page of periodic elements">
-        </mat-paginator>
     </div>
+
+    <mat-paginator  [length]="data.count"
+                    [pageSizeOptions]="[10, 20, 50, 100]"
+                    showFirstLastButtons
+                    class="rounded-b-md"
+                    aria-label="Select page of periodic elements">
+    </mat-paginator>
 </div>

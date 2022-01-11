@@ -8,13 +8,7 @@ import { merge, tap } from 'rxjs';
 @Component({
     selector   : 'material-grid',
     templateUrl: './material-grid.component.html',
-    styles: [`
-        material-grid {
-            display: flex;
-            flex: 1;
-        }
-    `],
-    encapsulation: ViewEncapsulation.None,
+    styleUrls: ['./material-grid.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MaterialGridComponent implements OnInit, AfterViewInit
