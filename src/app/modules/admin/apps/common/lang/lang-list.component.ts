@@ -35,6 +35,6 @@ export class LangListComponent extends ViewListComponent
 
     ngOnInit(): void
     {
-        super.ngOnInit();
+        // super.ngOnInit();
     }
 }

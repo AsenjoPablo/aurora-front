@@ -1,5 +1,5 @@
 
-import { ChangeDetectionStrategy, Component, Injector, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { ColumnConfig, ColumnDataType, GraphQLStatementsRepository, GridData, PageChangeEvent, ViewListComponent } from '@aurora';
 import { Observable } from 'rxjs';
 import { Country } from '../common.types';
@@ -12,8 +12,7 @@ import { CountryService } from './country.service';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-@GraphQLStatementsRepository(graphQL)
-export class CountryListComponent extends ViewListComponent
+export class CountryListComponent
 {
     gridData$: Observable<GridData<Country>>;
     columnsConfig: ColumnConfig[] = [
@@ -22,6 +21,14 @@ export class CountryListComponent extends ViewListComponent
             field: 'Actions',
             headerClass: 'w-32',
             sticky: true,
+            actions: () =>
+            {
+                return [{
+                    id: '',
+                    icon: '',
+                    title: ''
+                }];
+            }
         },
         {
             type: ColumnDataType.STRING,
@@ -81,12 +88,8 @@ export class CountryListComponent extends ViewListComponent
     ];
 
     constructor(
-        protected injector: Injector,
         private countryService: CountryService,
-    )
-    {
-        super(injector);
-    }
+    ) {}
 
     ngOnInit(): void
     {
