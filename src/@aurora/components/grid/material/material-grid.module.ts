@@ -6,6 +6,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { PipesModule } from '@aurora/pipes/pipes.module';
+import { GetActionsPipe } from '../get-actions.pipe';
 import { MaterialGridComponent } from './material-grid.component';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { MaterialGridComponent } from './material-grid.component';
         PipesModule,
     ],
     declarations: [
+        GetActionsPipe,
         MaterialGridComponent,
     ],
     exports: [

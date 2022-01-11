@@ -1,9 +1,9 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
-import { ColumnConfig, ColumnDataType, GridData, PageChangeEvent } from '../grid.types';
-import cloneDeep from 'lodash-es/cloneDeep';
+import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { ActionEvent, ColumnConfig, ColumnConfigAction, ColumnDataType, GridData, PageChangeEvent } from '../grid.types';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { merge, tap } from 'rxjs';
+import cloneDeep from 'lodash-es/cloneDeep';
 
 @Component({
     selector   : 'material-grid',
@@ -13,6 +13,7 @@ import { merge, tap } from 'rxjs';
 })
 export class MaterialGridComponent implements OnInit, AfterViewInit
 {
+    // inputs
     @Input() data: GridData;
 
     // clone columnsConfig to can reset columnsConfig to original status
@@ -34,10 +35,13 @@ export class MaterialGridComponent implements OnInit, AfterViewInit
         return this.columnsConfig.filter(item => !item.hidden).map(item => item.field);
     }
 
-    @Output() pageChange = new EventEmitter<PageChangeEvent>();
-
+    // view children
     @ViewChild(MatPaginator) private paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
+
+    // outputs
+    @Output() pageChange = new EventEmitter<PageChangeEvent>();
+    @Output() action = new EventEmitter<ActionEvent>();
 
     columnConfigType = ColumnDataType;
 
@@ -66,5 +70,10 @@ export class MaterialGridComponent implements OnInit, AfterViewInit
                 )
                 .subscribe();
         }
+    }
+
+    onClickAction(action: ColumnConfigAction, data: any, event: PointerEvent): void
+    {
+        this.action.emit({ action, data, event });
     }
 }

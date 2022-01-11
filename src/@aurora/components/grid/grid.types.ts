@@ -1,4 +1,17 @@
-import { Order } from "@aurora";
+export interface ActionEvent
+{
+    action: ColumnConfigAction;
+    data?: any;
+    event?: PointerEvent;
+}
+
+export interface GridAction
+{
+    action: ActionEvent;
+    data: {
+        [key: string]: string | number | boolean;
+    };
+}
 
 export interface GridData<T = any>
 {

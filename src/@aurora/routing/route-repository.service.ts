@@ -9,6 +9,7 @@ export class RouteRepositoryService
 {
     constructor(
         @Inject(ROUTE_DEFINITIONS) private routeRepository: RouteDefinition[],
+        
     ) { }
 
     route(routeName: string, params?: {[key: string]: string}): string
