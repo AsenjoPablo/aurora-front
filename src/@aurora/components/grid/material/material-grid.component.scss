@@ -1,0 +1,9 @@
+:host {
+    display: flex;
+    flex: 1;
+}
+
+.mat-header-cell, .mat-footer-cell, .mat-cell {
+    min-width: 80px;
+    box-sizing: border-box;
+}
