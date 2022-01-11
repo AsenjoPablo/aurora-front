@@ -36,4 +36,17 @@ export class Criteria
             order: Array.isArray(sort) ? [[...sort, order]] : [[sort, order]],
         }, args);
     }
+
+    static getFindByIdArguments(
+        {
+            id = '',
+        }: {
+            id?: string;
+        } = {}
+    ): QueryStatement
+    {
+        return merge({
+            where: { id },
+        }, {});
+    }
 }
